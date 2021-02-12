@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-from django.urls import reverse, resolve
+from django.urls import reverse
 
 
 class CustomUserTests(TestCase):
@@ -47,7 +47,7 @@ class SignupTests(TestCase):
             self.response, 'Hi there! I should not be on the page.')
 
     def test_signup_form(self):
-        new_user = get_user_model().objects.create_user(
+        get_user_model().objects.create_user(
             self.username, self.email)
 
         self.assertEqual(get_user_model().objects.all().count(), 1)
